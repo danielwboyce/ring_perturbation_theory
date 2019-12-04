@@ -34,7 +34,6 @@ def main():
 
     fcen = 0.15             # pulse center frequency
     df = 0.1                # pulse width (in frequency)
-    #nfreq = 1               # number of frequencies to be tracked
 
     sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r+0.1))]
 
@@ -47,8 +46,12 @@ def main():
                         symmetries=symmetries,
                         boundary_layers=pml_layers)
 
-    #npts_inner = ceil(2 * np.pi * a / resolution)
-    #npts_outer = ceil(2 * np.pi * b / resolution)
+    sim.run(mp.at_beginning(mp.output_epsilon),
+            mp.after_sources(mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)),
+            until_after_sources=300)
+
+    # npts_inner = ceil(2 * np.pi * a / resolution)
+    # npts_outer = ceil(2 * np.pi * b / resolution)
     npts_inner = 10
     npts_outer = 10
     angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
@@ -57,30 +60,28 @@ def main():
     inner_ring_fields = []
     outer_ring_fields = []
     for angle in angles_inner:
-        e_x_field = sim.get_field_point(mp.Ex, mp.Vector3(a*np.cos(angle), a*np.sin(angle), 0))
-        e_y_field = sim.get_field_point(mp.Ey, mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0))
-        e_z_field = sim.get_field_point(mp.Ez, mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0))
-        e_total_field = np.sqrt(e_x_field**2 + e_y_field**2 + e_z_field**2)
+        point = mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0)
+        e_x_field = sim.get_field_point(mp.Ex, point)
+        e_y_field = sim.get_field_point(mp.Ey, point)
+        e_z_field = sim.get_field_point(mp.Ez, point)
+        e_total_field = np.real(np.sqrt(e_x_field*np.conj(e_x_field) + e_y_field*np.conj(e_y_field) + e_z_field*np.conj(e_z_field)))
         inner_ring_fields.append(e_total_field)
 
     for angle in angles_outer:
-        e_x_field = sim.get_field_point(mp.Ex, mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0))
-        e_y_field = sim.get_field_point(mp.Ey, mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0))
-        e_z_field = sim.get_field_point(mp.Ez, mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0))
-        e_total_field = np.sqrt(e_x_field ** 2 + e_y_field ** 2 + e_z_field ** 2)
+        point = mp.Vector3(b * np.cos(angle), b * np.sin(angle), 0)
+        e_x_field = sim.get_field_point(mp.Ex, point)
+        e_y_field = sim.get_field_point(mp.Ey, point)
+        e_z_field = sim.get_field_point(mp.Ez, point)
+        e_total_field = np.real(np.sqrt(e_x_field*np.conj(e_x_field) + e_y_field*np.conj(e_y_field) + e_z_field*np.conj(e_z_field)))
         outer_ring_fields.append(e_total_field)
 
-    surface_integral = 2*np.pi*b*(mean(inner_ring_fields)+mean(outer_ring_fields))/2
-    print(f'The value of the surface_integral is {surface_integral}')
-
-    sim.run(mp.at_beginning(mp.output_epsilon),
-            mp.after_sources(mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)),
-            until_after_sources=300)
+    surface_integral = 2 * np.pi * b * (mean(inner_ring_fields) + mean(outer_ring_fields)) / 2
+    print(f'\nThe value of the surface_integral is {surface_integral}')
 
     # Output fields for one period at the end.  (If we output
     # at a single time, we might accidentally catch the Ez field when it is
     # almost zero and get a distorted view.)
-    sim.run(mp.at_every(1/fcen/20, mp.output_efield_z), until=1/fcen)
+    # sim.run(mp.at_every(1/fcen/20, mp.output_efield_z), until=1/fcen)
 
 
 if __name__ == '__main__':
