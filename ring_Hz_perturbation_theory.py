@@ -25,11 +25,11 @@ def main():
 
     m = 5
 
-    geometry = [mp.Block(center=mp.Vector3(r + (w / 2)),
+    geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
                          size=mp.Vector3(w, 1e20, 1e20),
                          material=mp.Medium(index=n))]
 
-    # Exciting the first resonance mode (calculated with Harminv)
+    # Finding a resonance mode with a high Q-value (calculated with Harminv)
 
     fcen = 0.15         # pulse center frequency
     df = 0.1            # pulse width (in frequency)
@@ -53,6 +53,8 @@ def main():
 
     fcen = resonance_0
     df = 0.01
+
+    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
 
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,

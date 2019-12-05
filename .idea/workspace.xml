@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" afterDir="false" />
     </list>
@@ -41,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_perturbation_theory">
+  <component name="RunManager" selected="Python.ring_Ez_perturbation_theory">
     <configuration name="ring_Ez_perturbation_theory" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -86,8 +85,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ring_perturbation_theory" />
         <item itemvalue="Python.ring_Ez_perturbation_theory" />
+        <item itemvalue="Python.ring_perturbation_theory" />
       </list>
     </recent_temporary>
   </component>
@@ -158,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575582852772</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Streamlined computation of surface integrals.">
+      <created>1575583374541</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1575583374541</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,6 +187,7 @@
     <MESSAGE value="Separated Meep simulations; running second one with fcen set at resonance_0 and df=0.01" />
     <MESSAGE value="Separating simulations for Ez-polarized and Hz-polarized fields into two different files." />
     <MESSAGE value="Cleaned up some commented-out code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up some commented-out code." />
+    <MESSAGE value="Streamlined computation of surface integrals." />
+    <option name="LAST_COMMIT_MESSAGE" value="Streamlined computation of surface integrals." />
   </component>
 </project>
