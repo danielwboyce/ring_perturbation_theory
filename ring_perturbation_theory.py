@@ -36,8 +36,6 @@ def main():
 
     sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r+0.1))]
 
-    symmetries = [mp.Mirror(mp.Y)]
-
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,
                         boundary_layers=pml_layers,
@@ -46,9 +44,11 @@ def main():
                         dimensions=dimensions,
                         m=m)
 
-    #h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
-    #sim.run(mp.after_sources(h), until_after_sources=200)
-    sim.run(mp.after_sources(mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)), until_after_sources=200)
+    h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
+    sim.run(mp.after_sources(h), until_after_sources=200)
+    #sim.run(mp.after_sources(mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)), until_after_sources=200)
+
+    resonance_0 = h.modes[0].freq
 
     # npts_inner = ceil(2 * np.pi * a / resolution)
     # npts_outer = ceil(2 * np.pi * b / resolution)
@@ -62,19 +62,19 @@ def main():
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
         # what time step are these get_field_point calls coming from?
-        e_x_field = sim.get_field_point(mp.Ex, point)
-        e_y_field = sim.get_field_point(mp.Ey, point)
+        e_r_field = sim.get_field_point(mp.Er, point)
+        e_p_field = sim.get_field_point(mp.Ep, point)
         e_z_field = sim.get_field_point(mp.Ez, point)
-        e_total_field = np.real(np.sqrt(e_x_field*np.conj(e_x_field) + e_y_field*np.conj(e_y_field) + e_z_field*np.conj(e_z_field)))
+        e_total_field = np.real(np.sqrt(e_r_field*np.conj(e_r_field) + e_p_field*np.conj(e_p_field) + e_z_field*np.conj(e_z_field)))
         #e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
         inner_ring_fields.append(e_total_field)
 
     for angle in angles_outer:
         point = mp.Vector3(b, angle)
-        e_x_field = sim.get_field_point(mp.Ex, point)
-        e_y_field = sim.get_field_point(mp.Ey, point)
+        e_r_field = sim.get_field_point(mp.Er, point)
+        e_p_field = sim.get_field_point(mp.Ep, point)
         e_z_field = sim.get_field_point(mp.Ez, point)
-        e_total_field = np.real(np.sqrt(e_x_field*np.conj(e_x_field) + e_y_field*np.conj(e_y_field) + e_z_field*np.conj(e_z_field)))
+        e_total_field = np.real(np.sqrt(e_r_field * np.conj(e_r_field) + e_p_field * np.conj(e_p_field) + e_z_field * np.conj(e_z_field)))
         #e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
         outer_ring_fields.append(e_total_field)
 
