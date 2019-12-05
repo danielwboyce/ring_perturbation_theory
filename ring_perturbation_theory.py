@@ -11,44 +11,38 @@ def main():
     r = 1
     a = r                   # inner radius of ring
     w = 1                   # width of waveguide
-    b = a + w               # outer radius of ring
+    b = a+w                 # outer radius of ring
     pad = 4                 # padding between waveguide and edge of PML
-
     dpml = 2                # thickness of PML
-    pml_layers = [mp.PML(dpml)]
+    pml_layers = [mp.PML(thickness=dpml)]
 
+    sxy = 2*(b+pad+dpml)  # cell size
+    cell_size = mp.Vector3(sxy,sxy)
     resolution = 10
 
-    sr = b + pad + dpml            # radial size (cell is from 0 to sr)
-    dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
-    cell = mp.Vector3(sr, 0, 0)
+    c1 = mp.Cylinder(radius=b, material=mp.Medium(index=n))
+    c2 = mp.Cylinder(radius=a)
+    geometry = [c1,c2]
 
-    m = 1
+    # Exciting the first resonance mode (calculated with Harminiv)
 
-    geometry = [mp.Block(center=mp.Vector3(r + (w / 2)),
-                         size=mp.Vector3(w, 1e20, 1e20),
-                         material=mp.Medium(index=n))]
-
-    # Exciting the first resonance mode (calculated with Harminv)
-
-    fcen = 0.15    # pulse center frequency
-    df = 0.1                   # pulse width (in frequency)
+    fcen = 0.118101372125519    # pulse center frequency
+    df = 0.1                    # pulse width (in frequency)
 
     sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r+0.1))]
 
     symmetries = [mp.Mirror(mp.Y)]
 
-    sim = mp.Simulation(cell_size=cell,
+    sim = mp.Simulation(cell_size=cell_size,
                         geometry=geometry,
-                        boundary_layers=pml_layers,
-                        resolution=resolution,
                         sources=sources,
-                        dimensions=dimensions,
-                        m=m)
+                        resolution=resolution,
+                        symmetries=symmetries,
+                        boundary_layers=pml_layers)
 
-    #h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
-    #sim.run(mp.after_sources(h), until_after_sources=200)
-    sim.run(mp.after_sources(mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)), until_after_sources=200)
+    sim.run(mp.at_beginning(mp.output_epsilon),
+            mp.after_sources(mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)),
+            until_after_sources=300)
 
     # npts_inner = ceil(2 * np.pi * a / resolution)
     # npts_outer = ceil(2 * np.pi * b / resolution)
@@ -60,8 +54,7 @@ def main():
     inner_ring_fields = []
     outer_ring_fields = []
     for angle in angles_inner:
-        point = mp.Vector3(a, angle)
-        # what time step are these get_field_point calls coming from?
+        point = mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0)
         e_x_field = sim.get_field_point(mp.Ex, point)
         e_y_field = sim.get_field_point(mp.Ey, point)
         e_z_field = sim.get_field_point(mp.Ez, point)
@@ -70,7 +63,7 @@ def main():
         inner_ring_fields.append(e_total_field)
 
     for angle in angles_outer:
-        point = mp.Vector3(b, angle)
+        point = mp.Vector3(a * np.cos(angle), a * np.sin(angle), 0)
         e_x_field = sim.get_field_point(mp.Ex, point)
         e_y_field = sim.get_field_point(mp.Ey, point)
         e_z_field = sim.get_field_point(mp.Ez, point)
