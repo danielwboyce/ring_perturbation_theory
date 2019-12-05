@@ -81,8 +81,14 @@ def main():
         e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
         parallel_fields.append(e_total_field)
 
-    surface_integral = 2 * np.pi * b * mean(parallel_fields)
-    print(f'\nThe value of the surface_integral is {surface_integral}')
+    numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
+    print(f'\nThe value of numerator_surface_integral is {numerator_surface_integral}')
+
+    denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3(), size=mp.Vector3(b + pad/2))
+    print(f'\nThe value of denominator_surface_integral is {denominator_surface_integral}')
+
+    perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
+    print(f'\nThe value of perturb_dw_dR is {perturb_dw_dR}')
 
 
 if __name__ == '__main__':
