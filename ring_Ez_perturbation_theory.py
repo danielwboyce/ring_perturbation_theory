@@ -87,9 +87,9 @@ def main():
     #print(f'\nThe value of denominator_surface_integral is {denominator_surface_integral}')
 
     perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
-    #print(f'\nThe value of perturb_dw_dR is {perturb_dw_dR}')
+    print(f'\nThe value of perturb_dw_dR is {perturb_dw_dR}')
 
-    drs = np.logspace(start=-4, stop=-2, num=5)
+    drs = np.logspace(start=-3, stop=-2, num=5)
     print(f'My drs array is {drs}')
     center_diff_dw_dR = []
     for dr in drs:
@@ -121,8 +121,9 @@ def main():
         resonance_dr = h.modes[0].freq
         dw_dR = (resonance_dr - resonance_0) / dr
         center_diff_dw_dR.append(dw_dR)
+        print(f'When dr={dr}, dw_dR={dw_dR}')
 
-    relative_errors = [(dw_dR - perturb_dw_dR) / perturb_dw_dR for dw_dR in center_diff_dw_dR]
+    relative_errors = [abs((dw_dR - perturb_dw_dR) / perturb_dw_dR) for dw_dR in center_diff_dw_dR]
     if mp.am_master():
         plt.figure(dpi=150)
         plt.loglog(drs, relative_errors, 'bo-', label='relative error')
@@ -133,7 +134,7 @@ def main():
         plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dw/dR$')
         plt.tight_layout()
         plt.show()
-        plt.savefig('ring_Ez_perturbation_theory.png')
+        #plt.savefig('ring_Ez_perturbation_theory.png')
 
 
 if __name__ == '__main__':
