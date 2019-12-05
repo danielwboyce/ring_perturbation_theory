@@ -31,8 +31,8 @@ def main():
 
     # Exciting the first resonance mode (calculated with Harminv)
 
-    fcen = 0.15    # pulse center frequency
-    df = 0.1                   # pulse width (in frequency)
+    fcen = 0.15         # pulse center frequency
+    df = 0.1            # pulse width (in frequency)
 
     sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r+0.1))]
 
@@ -46,7 +46,6 @@ def main():
 
     h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
     sim.run(mp.after_sources(h), until_after_sources=200)
-    #sim.run(mp.after_sources(mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)), until_after_sources=200)
 
     resonance_0 = h.modes[0].freq
 
@@ -65,8 +64,6 @@ def main():
 
     sim.run(until_after_sources=200)
 
-    # npts_inner = ceil(2 * np.pi * a / resolution)
-    # npts_outer = ceil(2 * np.pi * b / resolution)
     npts_inner = 10
     npts_outer = 10
     angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
@@ -76,12 +73,10 @@ def main():
     outer_ring_fields = []
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
-        # what time step are these get_field_point calls coming from?
         e_r_field = sim.get_field_point(mp.Er, point)
         e_p_field = sim.get_field_point(mp.Ep, point)
         e_z_field = sim.get_field_point(mp.Ez, point)
         e_total_field = np.real(np.sqrt(e_r_field*np.conj(e_r_field) + e_p_field*np.conj(e_p_field) + e_z_field*np.conj(e_z_field)))
-        #e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
         inner_ring_fields.append(e_total_field)
 
     for angle in angles_outer:
@@ -90,7 +85,6 @@ def main():
         e_p_field = sim.get_field_point(mp.Ep, point)
         e_z_field = sim.get_field_point(mp.Ez, point)
         e_total_field = np.real(np.sqrt(e_r_field * np.conj(e_r_field) + e_p_field * np.conj(e_p_field) + e_z_field * np.conj(e_z_field)))
-        #e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
         outer_ring_fields.append(e_total_field)
 
     surface_integral = 2 * np.pi * b * (mean(inner_ring_fields) + mean(outer_ring_fields)) / 2
