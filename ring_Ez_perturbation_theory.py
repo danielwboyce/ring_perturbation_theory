@@ -64,26 +64,22 @@ def main():
 
     sim.run(until_after_sources=200)
 
-    npts_inner = 10
-    npts_outer = 10
-    angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
-    angles_outer = 2 * np.pi / npts_outer * np.arange(npts_outer)
+    npts = 10
+    angles = 2 * np.pi / npts * np.arange(npts)
+    parallel_fields = []
 
-    inner_ring_fields = []
-    outer_ring_fields = []
-    for angle in angles_inner:
+    for angle in angles:
         point = mp.Vector3(a, angle)
         e_z_field = sim.get_field_point(mp.Ez, point)
         e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
-        inner_ring_fields.append(e_total_field)
+        parallel_fields.append(e_total_field)
 
-    for angle in angles_outer:
         point = mp.Vector3(b, angle)
         e_z_field = sim.get_field_point(mp.Ez, point)
         e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
-        outer_ring_fields.append(e_total_field)
+        parallel_fields.append(e_total_field)
 
-    surface_integral = 2 * np.pi * b * (mean(inner_ring_fields) + mean(outer_ring_fields)) / 2
+    surface_integral = 2 * np.pi * b * mean(parallel_fields)
     print(f'\nThe value of the surface_integral is {surface_integral}')
 
 
