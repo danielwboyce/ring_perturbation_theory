@@ -23,7 +23,7 @@ def main():
     dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
     cell = mp.Vector3(sr, 0, 0)
 
-    m = 1
+    m = 5
 
     geometry = [mp.Block(center=mp.Vector3(r + (w / 2)),
                          size=mp.Vector3(w, 1e20, 1e20),
