@@ -23,7 +23,7 @@ def main():
     dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
     cell = mp.Vector3(sr, 0, 0)
 
-    m = 1
+    m = 5
 
     geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
                          size=mp.Vector3(w, 1e20, 1e20),
@@ -31,11 +31,10 @@ def main():
 
     # Finding a resonance mode with a high Q-value (calculated with Harminv)
 
-    fcen = 0.5         # pulse center frequency
-    df = 0.5            # pulse width (in frequency)
+    fcen = 0.15         # pulse center frequency
+    df = 0.1            # pulse width (in frequency)
 
-    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Er, mp.Vector3(r+0.1), amplitude=1),
-               mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ep, mp.Vector3(r+0.1), amplitude=1j)]
+    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Hz, mp.Vector3(r+0.1), amplitude=1)]
 
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,
@@ -55,8 +54,7 @@ def main():
     fcen = resonance_0
     df = 0.01
 
-    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Er, mp.Vector3(r + 0.1), amplitude=1),
-               mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ep, mp.Vector3(r + 0.1), amplitude=1j)]
+    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Hz, mp.Vector3(r+0.1), amplitude=1)]
 
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,
@@ -97,7 +95,7 @@ def main():
     numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
     print(f'\nThe value of numerator_surface_integral is {numerator_surface_integral}')
 
-    denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3(), size=mp.Vector3(2 * (b + pad/2)))
+    denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
     print(f'\nThe value of denominator_surface_integral is {denominator_surface_integral}')
 
     perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
