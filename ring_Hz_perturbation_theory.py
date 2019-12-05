@@ -23,7 +23,7 @@ def main():
     dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
     cell = mp.Vector3(sr, 0, 0)
 
-    m = 5
+    m = 1
 
     geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
                          size=mp.Vector3(w, 1e20, 1e20),
@@ -31,10 +31,11 @@ def main():
 
     # Finding a resonance mode with a high Q-value (calculated with Harminv)
 
-    fcen = 0.15         # pulse center frequency
-    df = 0.1            # pulse width (in frequency)
+    fcen = 0.5         # pulse center frequency
+    df = 0.5            # pulse width (in frequency)
 
-    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r+0.1))]
+    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Er, mp.Vector3(r+0.1), amplitude=1),
+               mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ep, mp.Vector3(r+0.1), amplitude=1j)]
 
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,
@@ -54,7 +55,8 @@ def main():
     fcen = resonance_0
     df = 0.01
 
-    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
+    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Er, mp.Vector3(r + 0.1), amplitude=1),
+               mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ep, mp.Vector3(r + 0.1), amplitude=1j)]
 
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,
