@@ -2,7 +2,6 @@ from __future__ import division
 
 import meep as mp
 import numpy as np
-from math import ceil
 from statistics import mean
 
 
@@ -69,7 +68,6 @@ def main():
     npts = 10
     angles = 2 * np.pi / npts * np.arange(npts)
     parallel_fields = []
-
     for angle in angles:
         point = mp.Vector3(a, angle)
         e_z_field = sim.get_field_point(mp.Ez, point)
@@ -84,7 +82,7 @@ def main():
     numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
     print(f'\nThe value of numerator_surface_integral is {numerator_surface_integral}')
 
-    denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3(), size=mp.Vector3(b + pad/2))
+    denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3(), size=mp.Vector3(2 * (b + pad/2)))
     print(f'\nThe value of denominator_surface_integral is {denominator_surface_integral}')
 
     perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
