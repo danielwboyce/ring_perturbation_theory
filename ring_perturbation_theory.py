@@ -50,6 +50,21 @@ def main():
 
     resonance_0 = h.modes[0].freq
 
+    sim.reset_meep()
+
+    fcen = resonance_0
+    df = 0.01
+
+    sim = mp.Simulation(cell_size=cell,
+                        geometry=geometry,
+                        boundary_layers=pml_layers,
+                        resolution=resolution,
+                        sources=sources,
+                        dimensions=dimensions,
+                        m=m)
+
+    sim.run(until_after_sources=200)
+
     # npts_inner = ceil(2 * np.pi * a / resolution)
     # npts_outer = ceil(2 * np.pi * b / resolution)
     npts_inner = 10

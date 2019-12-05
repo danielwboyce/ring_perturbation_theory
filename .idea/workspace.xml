@@ -106,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575577840138</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Extracted resonance frequency from Harminv">
+      <created>1575581957320</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575581957320</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +132,7 @@
     <MESSAGE value="Calculated the surface integral, now with results!" />
     <MESSAGE value="Cleaned up the code somewhat" />
     <MESSAGE value="Made the existing code run in cylindrical coordinates." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the existing code run in cylindrical coordinates." />
+    <MESSAGE value="Extracted resonance frequency from Harminv" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extracted resonance frequency from Harminv" />
   </component>
 </project>
