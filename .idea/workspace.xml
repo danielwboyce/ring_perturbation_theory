@@ -40,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_perturbation_theory">
+  <component name="RunManager" selected="Python.ring_Ez_perturbation_theory">
     <configuration name="ring_Ez_perturbation_theory" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,8 +85,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ring_perturbation_theory" />
         <item itemvalue="Python.ring_Ez_perturbation_theory" />
+        <item itemvalue="Python.ring_perturbation_theory" />
       </list>
     </recent_temporary>
   </component>
@@ -178,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575584580137</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates.">
+      <created>1575585238524</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575585238524</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,6 +211,7 @@
     <MESSAGE value="Streamlined computation of surface integrals." />
     <MESSAGE value="Fixed some changes that had slipped through the cracks." />
     <MESSAGE value="First pass on calculating dw/dR from perturbation theory" />
-    <option name="LAST_COMMIT_MESSAGE" value="First pass on calculating dw/dR from perturbation theory" />
+    <MESSAGE value="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates." />
   </component>
 </project>
