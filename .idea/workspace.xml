@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="Increased resolution. Computatio">
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ez_error_convergence.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ez_error_convergence.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -256,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575592724636</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Increased resolution to resolution=100 all across perturbation theory script. Error converges for all drs being tested by that value so it would be easiest in writing the script to just test them all there.">
+      <created>1575662211098</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1575662211098</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -299,7 +304,8 @@
     <MESSAGE value="Made additional change to denominator_surface_integral calculation to account for cylindrical coordinates." />
     <MESSAGE value="Harminv still not finding resonance frequency." />
     <MESSAGE value="Script to find error convergence" />
-    <option name="LAST_COMMIT_MESSAGE" value="Script to find error convergence" />
+    <MESSAGE value="Increased resolution to resolution=100 all across perturbation theory script. Error converges for all drs being tested by that value so it would be easiest in writing the script to just test them all there." />
+    <option name="LAST_COMMIT_MESSAGE" value="Increased resolution to resolution=100 all across perturbation theory script. Error converges for all drs being tested by that value so it would be easiest in writing the script to just test them all there." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
