@@ -123,7 +123,7 @@ def main():
     relative_errors_dw_dR = [abs((dw_dR - perturb_theory_dw_dR) / perturb_theory_dw_dR) for dw_dR in center_diff_dw_dR]
 
     perturb_predicted_freqs_at_R_plus_dR = [dr * perturb_theory_dw_dR + Harminv_freq_at_R for dr in drs]
-    relative_errors_freqs_at_R_plus_dR = [abs((perturb_predicted_freqs_at_R_plus_dR[i] - Harminv_freqs_at_R_plus_dR[i]) / Harminv_freqs_at_R_plus_dR[i]) for i in len(Harminv_freqs_at_R_plus_dR)]
+    relative_errors_freqs_at_R_plus_dR = [abs((perturb_predicted_freqs_at_R_plus_dR[i] - Harminv_freqs_at_R_plus_dR[i]) / Harminv_freqs_at_R_plus_dR[i]) for i in range(len(Harminv_freqs_at_R_plus_dR))]
 
     if mp.am_master():
         plt.figure(dpi=150)
