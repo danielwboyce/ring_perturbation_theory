@@ -23,7 +23,7 @@ def main():
     dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
     cell = mp.Vector3(sr, 0, 0)
 
-    m = 5
+    m = 4
 
     geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
                          size=mp.Vector3(w, 1e20, 1e20),
@@ -81,21 +81,14 @@ def main():
         parallel_fields.append(e_total_field)
 
     numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
-    # print(f'\nThe value of numerator_surface_integral is {numerator_surface_integral}')
-
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
-    # print(f'\nThe value of denominator_surface_integral is {denominator_surface_integral}')
-
     perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
-    print(f'\nThe value of perturb_dw_dR is {perturb_dw_dR}')
 
     drs = np.logspace(start=-7, stop=-1.5, num=10)
-    print(f'My drs array is {drs}')
     center_diff_dw_dR = []
     for dr in drs:
         sim.reset_meep()
         w = 1 + dr  # width of waveguide
-        print(f'My current dr is {dr}')
         b = a + w
 
         fcen = resonance_0
@@ -121,7 +114,6 @@ def main():
         resonance_dr = h.modes[0].freq
         dw_dR = (resonance_dr - resonance_0) / dr
         center_diff_dw_dR.append(dw_dR)
-        print(f'When dr={dr}, dw_dR={dw_dR}')
 
     relative_errors = [abs((dw_dR - perturb_dw_dR) / perturb_dw_dR) for dw_dR in center_diff_dw_dR]
     if mp.am_master():
