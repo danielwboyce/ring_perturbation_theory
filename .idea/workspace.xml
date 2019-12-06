@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ring_Hz_see_fields.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Hz_see_fields.py" afterDir="false" />
-    </list>
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +98,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ring_Hz_see_fields.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ring_Hz_see_fields.xyz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -340,7 +337,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575667105354</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Reverted to xyz coordinates but added Harminv to see if it'll find anything.">
+      <created>1575668594270</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1575668594270</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Harminv didn't find resonant modes in Hz or Ey but it did find one in Ex with f=0.18304129247868764 and Q=205.64038665776567">
+      <created>1575668768840</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1575668768840</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -365,8 +376,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Cleaned up the code somewhat" />
-    <MESSAGE value="Made the existing code run in cylindrical coordinates." />
     <MESSAGE value="Extracted resonance frequency from Harminv" />
     <MESSAGE value="Separated Meep simulations; running second one with fcen set at resonance_0 and df=0.01" />
     <MESSAGE value="Separating simulations for Ez-polarized and Hz-polarized fields into two different files." />
@@ -390,7 +399,9 @@
     <MESSAGE value="Visualization does work in Cartesian coordinates." />
     <MESSAGE value="Revert &quot;Attempted to visualize fields in cylindrical coordinates; I don't think meep.Simulation.plot2D is playing nice with the fact it's in cylindrical coordinates.&quot;&#10;&#10;This reverts commit bfda5330" />
     <MESSAGE value="Reverted to cylindrical coordinates to see if they could work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reverted to cylindrical coordinates to see if they could work." />
+    <MESSAGE value="Reverted to xyz coordinates but added Harminv to see if it'll find anything." />
+    <MESSAGE value="Harminv didn't find resonant modes in Hz or Ey but it did find one in Ex with f=0.18304129247868764 and Q=205.64038665776567" />
+    <option name="LAST_COMMIT_MESSAGE" value="Harminv didn't find resonant modes in Hz or Ey but it did find one in Ex with f=0.18304129247868764 and Q=205.64038665776567" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
