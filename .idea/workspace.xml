@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="Fixed t">
       <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -404,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575670396272</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added calculation of error between resonance frequency at R+dR predicted by the value of dw/dR found with perturbation theory and the resonance frequency found with Harminiv by running a simulation at R+dR.">
+      <created>1575672140110</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1575672140110</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -429,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Streamlined computation of surface integrals." />
     <MESSAGE value="Fixed some changes that had slipped through the cracks." />
     <MESSAGE value="First pass on calculating dw/dR from perturbation theory" />
     <MESSAGE value="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates." />
@@ -454,7 +459,8 @@
     <MESSAGE value="Determined that Harminv will find a resonant mode when m=4" />
     <MESSAGE value="Changed m to m=4 to match the mode that the Hz script is working with." />
     <MESSAGE value="Fixed numerator_surface_integral calculation for the Hz case to include the adjustment for the perpendicular fields." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed numerator_surface_integral calculation for the Hz case to include the adjustment for the perpendicular fields." />
+    <MESSAGE value="Added calculation of error between resonance frequency at R+dR predicted by the value of dw/dR found with perturbation theory and the resonance frequency found with Harminiv by running a simulation at R+dR." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added calculation of error between resonance frequency at R+dR predicted by the value of dw/dR found with perturbation theory and the resonance frequency found with Harminiv by running a simulation at R+dR." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -47,11 +47,11 @@ def main():
     h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
     sim.run(mp.after_sources(h), until_after_sources=200)
 
-    resonance_0 = h.modes[0].freq
+    Harminv_freq_at_R = h.modes[0].freq
 
     sim.reset_meep()
 
-    fcen = resonance_0
+    fcen = Harminv_freq_at_R
     df = 0.01
 
     sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
@@ -82,10 +82,10 @@ def main():
 
     numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
-    perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
+    perturb_theory_dw_dR = -Harminv_freq_at_R * numerator_surface_integral / (4 * denominator_surface_integral)
 
     center_diff_dw_dR = []
-    Harminv_resonances = []
+    Harminv_freqs_at_R_plus_dR = []
 
     drs = np.logspace(start=-7, stop=-1.5, num=10)
 
@@ -94,7 +94,7 @@ def main():
         w = 1 + dr  # width of waveguide
         b = a + w
 
-        fcen = resonance_0
+        fcen = Harminv_freq_at_R
         df = 0.01
 
         sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
@@ -114,17 +114,16 @@ def main():
         h = mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)
         sim.run(mp.after_sources(h), until_after_sources=200)
 
-        resonance_Harminv = h.modes[0].freq
-        Harminv_resonances.append(resonance_Harminv)
+        Harminv_freq_at_R_plus_dR = h.modes[0].freq
+        Harminv_freqs_at_R_plus_dR.append(Harminv_freq_at_R_plus_dR)
 
-        dw_dR = (resonance_dr - resonance_0) / dr
+        dw_dR = (Harminv_freq_at_R_plus_dR - Harminv_freq_at_R) / dr
         center_diff_dw_dR.append(dw_dR)
 
-    relative_errors_dw_dR = [abs((dw_dR - perturb_dw_dR) / perturb_dw_dR) for dw_dR in center_diff_dw_dR]
+    relative_errors_dw_dR = [abs((dw_dR - perturb_theory_dw_dR) / perturb_theory_dw_dR) for dw_dR in center_diff_dw_dR]
 
-    predicted_resonances = [dr * perturb_dw_dR + resonance_0 for dr in drs]
-    for i in len(Harminv_resonances):
-        relative_errors_resonances = [abs((predicted_resonances[i] - Harminv_resonances[i]) / Harminv_resonances[i]) for resonance_dr in Harminv_resonances]
+    perturb_predicted_freqs_at_R_plus_dR = [dr * perturb_theory_dw_dR + Harminv_freq_at_R for dr in drs]
+    relative_errors_freqs_at_R_plus_dR = [abs((perturb_predicted_freqs_at_R_plus_dR[i] - Harminv_freqs_at_R_plus_dR[i]) / Harminv_freqs_at_R_plus_dR[i]) for i in len(Harminv_freqs_at_R_plus_dR)]
 
     if mp.am_master():
         plt.figure(dpi=150)
@@ -140,7 +139,7 @@ def main():
         plt.clf()
 
         plt.figure(dpi=150)
-        plt.loglog(drs, relative_errors_resonances, 'bo-', label='relative error')
+        plt.loglog(drs, relative_errors_freqs_at_R_plus_dR, 'bo-', label='relative error')
         plt.grid(True, which='both', ls='-')
         plt.xlabel('(perturbation amount $dr$)')
         plt.ylabel('relative error between resonances predicted resonances and resonances found with Harminv')
