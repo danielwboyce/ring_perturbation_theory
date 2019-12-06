@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575662211098</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added some results.">
+      <created>1575664432080</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1575664432080</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -305,7 +312,8 @@
     <MESSAGE value="Harminv still not finding resonance frequency." />
     <MESSAGE value="Script to find error convergence" />
     <MESSAGE value="Increased resolution to resolution=100 all across perturbation theory script. Error converges for all drs being tested by that value so it would be easiest in writing the script to just test them all there." />
-    <option name="LAST_COMMIT_MESSAGE" value="Increased resolution to resolution=100 all across perturbation theory script. Error converges for all drs being tested by that value so it would be easiest in writing the script to just test them all there." />
+    <MESSAGE value="Added some results." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some results." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

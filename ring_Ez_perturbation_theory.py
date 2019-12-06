@@ -133,8 +133,8 @@ def main():
         plt.legend(loc='upper left')
         plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dw/dR$')
         plt.tight_layout()
-        plt.show()
-        #plt.savefig('ring_Ez_perturbation_theory.png')
+        #plt.show()
+        plt.savefig('ring_Ez_perturbation_theory.png')
 
 
 if __name__ == '__main__':
