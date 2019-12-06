@@ -45,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_Hz_see_fields.cyl">
+  <component name="RunManager" selected="Python.ring_perturbation_theory">
     <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,9 +153,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ring_Hz_see_fields.cyl" />
-        <item itemvalue="Python.ring_Ez_perturbation_theory" />
         <item itemvalue="Python.ring_perturbation_theory" />
+        <item itemvalue="Python.ring_Ez_perturbation_theory" />
+        <item itemvalue="Python.ring_Hz_see_fields.cyl" />
         <item itemvalue="Python.ring_Hz_see_fields" />
         <item itemvalue="Python.minimize_error" />
       </list>
