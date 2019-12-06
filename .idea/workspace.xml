@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="Harminv still not finding resonance frequency.">
+      <change afterPath="$PROJECT_DIR$/Ez_error_convergence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +27,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -40,7 +41,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_Ez_perturbation_theory">
+  <component name="RunManager" selected="Python.minimize_error">
+    <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ring_perturbation_theory" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Ez_error_convergence.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ring_Ez_perturbation_theory" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,8 +107,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ring_Ez_perturbation_theory" />
+        <item itemvalue="Python.minimize_error" />
         <item itemvalue="Python.ring_perturbation_theory" />
+        <item itemvalue="Python.ring_Ez_perturbation_theory" />
       </list>
     </recent_temporary>
   </component>
@@ -185,8 +208,53 @@
       <option name="project" value="LOCAL" />
       <updated>1575585238524</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="First pass on finding relative error">
+      <created>1575586992315</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1575586992315</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Finding the difference in error between perturbation theory and the center-difference for Ez modes. The relative error is almost two orders of magnitude!">
+      <created>1575588765703</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575588765703</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added a circularly-polarized in-plane component; not finding a resonance mode.">
+      <created>1575588817469</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575588817469</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Made additional change to denominator_surface_integral calculation to account for cylindrical coordinates.">
+      <created>1575589206259</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1575589206259</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Harminv still not finding resonance frequency.">
+      <created>1575589256567</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1575589256567</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -212,6 +280,22 @@
     <MESSAGE value="Fixed some changes that had slipped through the cracks." />
     <MESSAGE value="First pass on calculating dw/dR from perturbation theory" />
     <MESSAGE value="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates." />
+    <MESSAGE value="First pass on finding relative error" />
+    <MESSAGE value="Finding the difference in error between perturbation theory and the center-difference for Ez modes. The relative error is almost two orders of magnitude!" />
+    <MESSAGE value="Added a circularly-polarized in-plane component; not finding a resonance mode." />
+    <MESSAGE value="Made additional change to denominator_surface_integral calculation to account for cylindrical coordinates." />
+    <MESSAGE value="Harminv still not finding resonance frequency." />
+    <option name="LAST_COMMIT_MESSAGE" value="Harminv still not finding resonance frequency." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
