@@ -84,8 +84,11 @@ def main():
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
     perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
 
-    drs = np.logspace(start=-7, stop=-1.5, num=10)
     center_diff_dw_dR = []
+    Harminv_resonances = []
+
+    drs = np.logspace(start=-7, stop=-1.5, num=10)
+
     for dr in drs:
         sim.reset_meep()
         w = 1 + dr  # width of waveguide
@@ -111,14 +114,21 @@ def main():
         h = mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)
         sim.run(mp.after_sources(h), until_after_sources=200)
 
-        resonance_dr = h.modes[0].freq
+        resonance_Harminv = h.modes[0].freq
+        Harminv_resonances.append(resonance_Harminv)
+
         dw_dR = (resonance_dr - resonance_0) / dr
         center_diff_dw_dR.append(dw_dR)
 
-    relative_errors = [abs((dw_dR - perturb_dw_dR) / perturb_dw_dR) for dw_dR in center_diff_dw_dR]
+    relative_errors_dw_dR = [abs((dw_dR - perturb_dw_dR) / perturb_dw_dR) for dw_dR in center_diff_dw_dR]
+
+    predicted_resonances = [dr * perturb_dw_dR + resonance_0 for dr in drs]
+    for i in len(Harminv_resonances):
+        relative_errors_resonances = [abs((predicted_resonances[i] - Harminv_resonances[i]) / Harminv_resonances[i]) for resonance_dr in Harminv_resonances]
+
     if mp.am_master():
         plt.figure(dpi=150)
-        plt.loglog(drs, relative_errors, 'bo-', label='relative error')
+        plt.loglog(drs, relative_errors_dw_dR, 'bo-', label='relative error')
         plt.grid(True, which='both', ls='-')
         plt.xlabel('(perturbation amount $dr$)')
         plt.ylabel('relative error between \ncenter-difference and perturbation theory')
@@ -126,7 +136,20 @@ def main():
         plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dw/dR$')
         plt.tight_layout()
         #plt.show()
-        plt.savefig('ring_Ez_perturbation_theory.png')
+        plt.savefig('ring_Ez_perturbation_theory.dw_dR_error.png')
+        plt.clf()
+
+        plt.figure(dpi=150)
+        plt.loglog(drs, relative_errors_resonances, 'bo-', label='relative error')
+        plt.grid(True, which='both', ls='-')
+        plt.xlabel('(perturbation amount $dr$)')
+        plt.ylabel('relative error between resonances predicted resonances and resonances found with Harminv')
+        plt.legend(loc='upper left')
+        plt.title('Comparison of resonances predicted by $dw/dR$ found \nwith perturbation theory and resonances found \nwith Harminv in a separate simulation of perturbed state')
+        plt.tight_layout()
+        # plt.show()
+        plt.savefig('ring_Ez_perturbation_theory.resonances_error.png')
+        plt.clf()
 
 
 if __name__ == '__main__':
