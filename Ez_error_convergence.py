@@ -17,13 +17,13 @@ def main():
     dpml = 2                # thickness of PML
     pml_layers = [mp.PML(dpml)]
 
-    resolution = 10
+    resolution = 100
 
     sr = b + pad + dpml            # radial size (cell is from 0 to sr)
     dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
     cell = mp.Vector3(sr, 0, 0)
 
-    m = 5
+    m = 4
 
     geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
                          size=mp.Vector3(w, 1e20, 1e20),
@@ -47,11 +47,11 @@ def main():
     h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
     sim.run(mp.after_sources(h), until_after_sources=200)
 
-    resonance_0 = h.modes[0].freq
+    Harminv_freq_at_R = h.modes[0].freq
 
     sim.reset_meep()
 
-    fcen = resonance_0
+    fcen = Harminv_freq_at_R
     df = 0.01
 
     sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
@@ -81,26 +81,23 @@ def main():
         parallel_fields.append(e_total_field)
 
     numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
-    # print(f'\nThe value of numerator_surface_integral is {numerator_surface_integral}')
-
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
-    # print(f'\nThe value of denominator_surface_integral is {denominator_surface_integral}')
+    perturb_theory_dw_dR = -Harminv_freq_at_R * numerator_surface_integral / (4 * denominator_surface_integral)
 
-    perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
-    print(f'\nThe value of perturb_dw_dR is {perturb_dw_dR}')
-
-    f = open('Ez_error_convergence.dat', 'a')
+    # center_diff_dw_dR = []
+    Harminv_freqs_at_R_plus_dR = []
 
     resolutions = [10, 20, 40, 80, 100, 160, 320]
-    center_diff_dw_dR = []
+    drs = np.logspace(start=-7, stop=-1.5, num=10)
+    dr = drs[-1]
+
     for resolution in resolutions:
         sim.reset_meep()
-        dr = 1e-3
         w = 1 + dr  # width of waveguide
-        b = a + w
+        #b = a + w
 
-        fcen = resonance_0
-        df = 0.02
+        fcen = Harminv_freq_at_R
+        df = 0.01
 
         sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
 
@@ -118,29 +115,42 @@ def main():
 
         h = mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)
         sim.run(mp.after_sources(h), until_after_sources=200)
-        print(f'The resonance frequency for dr={dr}, resolution={resolution}, is {h.modes[0].freq} with Q={h.modes[0].Q}')
 
-        resonance_dr = h.modes[0].freq
-        dw_dR = (resonance_dr - resonance_0) / dr
-        center_diff_dw_dR.append(dw_dR)
-        print(f'When dr={dr}, dw_dR={dw_dR}')
+        Harminv_freq_at_R_plus_dR = h.modes[0].freq
+        Harminv_freqs_at_R_plus_dR.append(Harminv_freq_at_R_plus_dR)
 
-        results = f'dr={dr}, res={resolution}, dw_dR={dw_dR}, relative_error={abs((dw_dR - perturb_dw_dR) / perturb_dw_dR)}\n'
-        f.write(results)
+        # dw_dR = (Harminv_freq_at_R_plus_dR - Harminv_freq_at_R) / dr
+        # center_diff_dw_dR.append(dw_dR)
 
-    f.close()
-    relative_errors = [abs((dw_dR - perturb_dw_dR) / perturb_dw_dR) for dw_dR in center_diff_dw_dR]
+    # relative_errors_dw_dR = [abs((dw_dR - perturb_theory_dw_dR) / perturb_theory_dw_dR) for dw_dR in center_diff_dw_dR]
+
+    perturb_predicted_freqs_at_R_plus_dR = [dr * perturb_theory_dw_dR + Harminv_freq_at_R for dr in drs]
+    relative_errors_freqs_at_R_plus_dR = [abs((perturb_predicted_freqs_at_R_plus_dR[i] - Harminv_freqs_at_R_plus_dR[i]) / Harminv_freqs_at_R_plus_dR[i]) for i in range(len(Harminv_freqs_at_R_plus_dR))]
+
     if mp.am_master():
+        # plt.figure(dpi=150)
+        # plt.loglog(drs, relative_errors_dw_dR, 'bo-', label='relative error')
+        # plt.grid(True, which='both', ls='-')
+        # plt.xlabel('(perturbation amount $dr$)')
+        # plt.ylabel('relative error between \ncenter-difference and perturbation theory')
+        # plt.legend(loc='upper left')
+        # plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dw/dR$')
+        # plt.tight_layout()
+        # plt.show()
+        #plt.savefig('ring_Ez_perturbation_theory.dw_dR_error.png')
+        # plt.clf()
+
         plt.figure(dpi=150)
-        plt.loglog(resolutions, relative_errors, 'bo-', label='relative error')
+        plt.loglog(resolutions, relative_errors_freqs_at_R_plus_dR, 'bo-', label='relative error')
         plt.grid(True, which='both', ls='-')
         plt.xlabel('resolution')
-        plt.ylabel('relative error between \ncenter-difference and perturbation theory')
+        plt.ylabel('relative error between resonance frequencies')
         plt.legend(loc='upper left')
-        plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dw/dR$')
+        plt.title('Comparison of resonance frequencies at $R+dR$ predicted by $dw/dR$\nfound with perturbation theory and resonances found with Harminv\nin a separate simulation of state at $R+dR$')
         plt.tight_layout()
-        #plt.show()
-        #plt.savefig('ring_Ez_perturbation_theory.png')
+        plt.savefig('Ez_error_convergence.freqs_error.png')
+        plt.show()
+        plt.clf()
 
 
 if __name__ == '__main__':

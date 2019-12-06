@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="" />
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Ez_error_convergence.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ez_error_convergence.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_Ez_perturbation_theory">
+  <component name="RunManager" selected="Python.minimize_error">
     <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.minimize_error" />
         <item itemvalue="Python.ring_Ez_perturbation_theory" />
         <item itemvalue="Python.ring_perturbation_theory" />
         <item itemvalue="Python.ring_Hz_see_fields.cyl" />
         <item itemvalue="Python.ring_Hz_see_fields" />
-        <item itemvalue="Python.minimize_error" />
       </list>
     </recent_temporary>
   </component>
@@ -422,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575673060742</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Fixed another typo.">
+      <created>1575674234964</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1575674234964</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -447,7 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates." />
     <MESSAGE value="First pass on finding relative error" />
     <MESSAGE value="Finding the difference in error between perturbation theory and the center-difference for Ez modes. The relative error is almost two orders of magnitude!" />
     <MESSAGE value="Added a circularly-polarized in-plane component; not finding a resonance mode." />
@@ -472,7 +480,8 @@
     <MESSAGE value="Added calculation of error between resonance frequency at R+dR predicted by the value of dw/dR found with perturbation theory and the resonance frequency found with Harminiv by running a simulation at R+dR." />
     <MESSAGE value="Renamed a large number of variables to be more transparent in what they're representing." />
     <MESSAGE value="Slightly redid formatting of output plot." />
-    <option name="LAST_COMMIT_MESSAGE" value="Slightly redid formatting of output plot." />
+    <MESSAGE value="Fixed another typo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed another typo." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
