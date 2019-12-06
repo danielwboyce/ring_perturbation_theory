@@ -23,7 +23,7 @@ def main():
     dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
     cell = mp.Vector3(sr, 0, 0)
 
-    m = 5
+    m = 4
 
     geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
                          size=mp.Vector3(w, 1e20, 1e20),
@@ -44,7 +44,7 @@ def main():
                         dimensions=dimensions,
                         m=m)
 
-    h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
+    h = mp.Harminv(mp.Hz, mp.Vector3(r+0.1), fcen, df)
     sim.run(mp.after_sources(h), until_after_sources=200)
 
     resonance_0 = h.modes[0].freq

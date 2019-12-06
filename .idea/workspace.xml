@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="" />
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_Hz_see_fields">
+  <component name="RunManager" selected="Python.ring_perturbation_theory">
     <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,6 +109,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="ring_Hz_see_fields.cyl" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ring_perturbation_theory" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ring_Hz_see_fields.cyl.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ring_perturbation_theory" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -130,10 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ring_perturbation_theory" />
+        <item itemvalue="Python.ring_Hz_see_fields.cyl" />
         <item itemvalue="Python.ring_Hz_see_fields" />
         <item itemvalue="Python.ring_Ez_perturbation_theory" />
         <item itemvalue="Python.minimize_error" />
-        <item itemvalue="Python.ring_perturbation_theory" />
       </list>
     </recent_temporary>
   </component>
@@ -351,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575668768840</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Split the field files into one that will stay in xyz coordinates and one that will stay in cylindrical coordinates.">
+      <created>1575668983252</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1575668983252</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -376,7 +407,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Extracted resonance frequency from Harminv" />
     <MESSAGE value="Separated Meep simulations; running second one with fcen set at resonance_0 and df=0.01" />
     <MESSAGE value="Separating simulations for Ez-polarized and Hz-polarized fields into two different files." />
     <MESSAGE value="Cleaned up some commented-out code." />
@@ -401,7 +431,8 @@
     <MESSAGE value="Reverted to cylindrical coordinates to see if they could work." />
     <MESSAGE value="Reverted to xyz coordinates but added Harminv to see if it'll find anything." />
     <MESSAGE value="Harminv didn't find resonant modes in Hz or Ey but it did find one in Ex with f=0.18304129247868764 and Q=205.64038665776567" />
-    <option name="LAST_COMMIT_MESSAGE" value="Harminv didn't find resonant modes in Hz or Ey but it did find one in Ex with f=0.18304129247868764 and Q=205.64038665776567" />
+    <MESSAGE value="Split the field files into one that will stay in xyz coordinates and one that will stay in cylindrical coordinates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Split the field files into one that will stay in xyz coordinates and one that will stay in cylindrical coordinates." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
