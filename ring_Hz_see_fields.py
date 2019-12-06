@@ -38,14 +38,14 @@ def main():
                         symmetries=[mp.Mirror(mp.Y)],
                         boundary_layers=[mp.PML(dpml)])
 
-    h = mp.Harminv(mp.Hz, mp.Vector3(r + 0.1), fcen, df)
+    h = mp.Harminv(mp.Ex, mp.Vector3(r + 0.1), fcen, df)
     sim.run(mp.after_sources(h), until_after_sources=200)
 
     print(f'Harminv found {len(h.modes)} resonant modes(s).')
     for mode in h.modes:
         print(f'The resonant mode with f={mode.freq} has Q={mode.Q}')
 
-    sim.plot2D(fields=mp.Ez,
+    sim.plot2D(fields=mp.Ex,
            field_parameters={'alpha':0.8, 'cmap':'RdBu', 'interpolation':'none'},
            boundary_parameters={'hatch':'o', 'linewidth':1.5, 'facecolor':'y', 'edgecolor':'b', 'alpha':0.3})
     plt.show()
