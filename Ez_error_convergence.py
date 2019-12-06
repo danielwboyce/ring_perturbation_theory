@@ -95,7 +95,7 @@ def main():
     center_diff_dw_dR = []
     for resolution in resolutions:
         sim.reset_meep()
-        dr = 1e-1
+        dr = 1e-3
         w = 1 + dr  # width of waveguide
         b = a + w
 
@@ -139,7 +139,7 @@ def main():
         plt.legend(loc='upper left')
         plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dw/dR$')
         plt.tight_layout()
-        plt.show()
+        #plt.show()
         #plt.savefig('ring_Ez_perturbation_theory.png')
 
 

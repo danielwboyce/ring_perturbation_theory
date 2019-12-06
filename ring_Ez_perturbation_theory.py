@@ -17,7 +17,7 @@ def main():
     dpml = 2                # thickness of PML
     pml_layers = [mp.PML(dpml)]
 
-    resolution = 10
+    resolution = 100
 
     sr = b + pad + dpml            # radial size (cell is from 0 to sr)
     dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
@@ -89,7 +89,7 @@ def main():
     perturb_dw_dR = -resonance_0 * numerator_surface_integral / (4 * denominator_surface_integral)
     print(f'\nThe value of perturb_dw_dR is {perturb_dw_dR}')
 
-    drs = np.logspace(start=-3, stop=-2, num=5)
+    drs = np.logspace(start=-7, stop=-1.5, num=10)
     print(f'My drs array is {drs}')
     center_diff_dw_dR = []
     for dr in drs:
