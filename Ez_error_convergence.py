@@ -88,13 +88,13 @@ def main():
     Harminv_freqs_at_R_plus_dR = []
 
     resolutions = [10, 20, 40, 80, 100, 160, 320]
-    drs = np.logspace(start=-7, stop=-1.5, num=10)
-    dr = drs[-1]
+    drs = np.logspace(start=-3, stop=-0.1, num=10)
+    dr = 1e-3
 
     for resolution in resolutions:
         sim.reset_meep()
         w = 1 + dr  # width of waveguide
-        #b = a + w
+        # b = a + w
 
         fcen = Harminv_freq_at_R
         df = 0.01
@@ -122,7 +122,7 @@ def main():
         # dw_dR = (Harminv_freq_at_R_plus_dR - Harminv_freq_at_R) / dr
         # center_diff_dw_dR.append(dw_dR)
 
-    # relative_errors_dw_dR = [abs((dw_dR - perturb_theory_dw_dR) / perturb_theory_dw_dR) for dw_dR in center_diff_dw_dR]
+    # relative_errors_dw_dR = [abs((dw_dR - perturb_theory_dw_dR) / dw_dR) for dw_dR in center_diff_dw_dR]
 
     perturb_predicted_freqs_at_R_plus_dR = [dr * perturb_theory_dw_dR + Harminv_freq_at_R for dr in drs]
     relative_errors_freqs_at_R_plus_dR = [abs((perturb_predicted_freqs_at_R_plus_dR[i] - Harminv_freqs_at_R_plus_dR[i]) / Harminv_freqs_at_R_plus_dR[i]) for i in range(len(Harminv_freqs_at_R_plus_dR))]
@@ -131,13 +131,13 @@ def main():
         # plt.figure(dpi=150)
         # plt.loglog(drs, relative_errors_dw_dR, 'bo-', label='relative error')
         # plt.grid(True, which='both', ls='-')
-        # plt.xlabel('(perturbation amount $dr$)')
-        # plt.ylabel('relative error between \ncenter-difference and perturbation theory')
-        # plt.legend(loc='upper left')
-        # plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dw/dR$')
+        # plt.xlabel('perturbation amount $dr$')
+        # plt.ylabel('relative error between $dω/dR$')
+        # plt.legend(loc='upper right')
+        # plt.title('Comparison of Perturbation Theory and \nCenter-Difference Calculations in Finding $dω/dR$')
         # plt.tight_layout()
         # plt.show()
-        #plt.savefig('ring_Ez_perturbation_theory.dw_dR_error.png')
+        # plt.savefig('ring_Ez_perturbation_theory.dw_dR_error.png')
         # plt.clf()
 
         plt.figure(dpi=150)
@@ -146,9 +146,9 @@ def main():
         plt.xlabel('resolution')
         plt.ylabel('relative error between resonance frequencies')
         plt.legend(loc='upper left')
-        plt.title('Comparison of resonance frequencies at $R+dR$ predicted by $dw/dR$\nfound with perturbation theory and resonances found with Harminv\nin a separate simulation of state at $R+dR$')
+        plt.title('Comparison of resonance frequencies at $R+dR$ predicted by\nperturbation theory found with Harminv')
         plt.tight_layout()
-        plt.savefig('Ez_error_convergence.freqs_error.png')
+        plt.savefig('Ez_error_convergence.dr_1e-3.freqs_error.png')
         plt.show()
         plt.clf()
 
