@@ -18,6 +18,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="bigger_drs" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -100,7 +105,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ring_Hz_see_fields.xyz.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/small_drs_tests/ring_Hz_see_fields.xyz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -121,7 +126,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ring_Hz_see_fields.cyl.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/small_drs_tests/ring_Hz_see_fields.cyl.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -473,7 +478,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575678491343</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Some result images">
+      <created>1575679589835</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1575679589835</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Some result images">
+      <created>1575679649934</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1575679649934</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Increased resolution to resolution=100 all across perturbation theory script. Error converges for all drs being tested by that value so it would be easiest in writing the script to just test them all there." />
     <MESSAGE value="Added some results." />
     <MESSAGE value="Alteration to save figure." />
     <MESSAGE value="Added script to be used in the process of troubleshooting why Harminv isn't finding resonance frequencies." />
@@ -523,7 +541,8 @@
     <MESSAGE value="Changes to plots" />
     <MESSAGE value="Added error calculation to Hz case" />
     <MESSAGE value="Changed plot titles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed plot titles" />
+    <MESSAGE value="Some result images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some result images" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
