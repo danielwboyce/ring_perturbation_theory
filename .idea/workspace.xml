@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ez_error_convergence.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ez_error_convergence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +46,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.minimize_error">
+  <component name="RunManager" selected="Python.ring_Ez_perturbation_theory">
     <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -154,8 +154,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.minimize_error" />
         <item itemvalue="Python.ring_Ez_perturbation_theory" />
+        <item itemvalue="Python.minimize_error" />
         <item itemvalue="Python.ring_perturbation_theory" />
         <item itemvalue="Python.ring_Hz_see_fields.cyl" />
         <item itemvalue="Python.ring_Hz_see_fields" />
@@ -439,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575674820124</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Changed method of calculating relative error in dw/dR; treating average dw/dR over dR as &quot;actual&quot;">
+      <created>1575676402834</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1575676402834</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -464,7 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finding the difference in error between perturbation theory and the center-difference for Ez modes. The relative error is almost two orders of magnitude!" />
     <MESSAGE value="Added a circularly-polarized in-plane component; not finding a resonance mode." />
     <MESSAGE value="Made additional change to denominator_surface_integral calculation to account for cylindrical coordinates." />
     <MESSAGE value="Harminv still not finding resonance frequency." />
@@ -489,7 +495,8 @@
     <MESSAGE value="Slightly redid formatting of output plot." />
     <MESSAGE value="Fixed another typo." />
     <MESSAGE value="Redoing some error convergence tests, looking at relative error convergence in frequency predictions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Redoing some error convergence tests, looking at relative error convergence in frequency predictions" />
+    <MESSAGE value="Changed method of calculating relative error in dw/dR; treating average dw/dR over dR as &quot;actual&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed method of calculating relative error in dw/dR; treating average dw/dR over dR as &quot;actual&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
