@@ -144,7 +144,7 @@ def main():
         plt.xlabel('perturbation amount $dr$')
         plt.ylabel('relative error between resonance frequencies')
         plt.legend(loc='upper left')
-        plt.title('Comparison of resonance frequencies at $R+dR$ predicted by $dω/dR$\nfound with perturbation theory and resonances found with Harminv\nin a separate simulation of state at $R+dR$')
+        plt.title('Comparison of resonance frequencies at $R+dR$ predicted by\nperturbation theory found with Harminv')
         plt.tight_layout()
         # plt.show()
         plt.savefig('ring_Ez_perturbation_theory.freqs_error.png')
