@@ -87,7 +87,7 @@ def main():
     center_diff_dw_dR = []
     Harminv_freqs_at_R_plus_dR = []
 
-    drs = np.logspace(start=-7, stop=-1.5, num=10)
+    drs = np.logspace(start=-3, stop=-0.5, num=10)
 
     for dr in drs:
         sim.reset_meep()

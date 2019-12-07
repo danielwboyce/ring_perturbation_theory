@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="Hide some old results">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ez_error_convergence.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ez_error_convergence.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +35,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/small_drs_tests" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -50,7 +54,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_perturbation_theory">
+  <component name="RunManager" selected="Python.minimize_error">
     <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,9 +162,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.minimize_error" />
         <item itemvalue="Python.ring_perturbation_theory" />
         <item itemvalue="Python.ring_Ez_perturbation_theory" />
-        <item itemvalue="Python.minimize_error" />
         <item itemvalue="Python.ring_Hz_see_fields.cyl" />
         <item itemvalue="Python.ring_Hz_see_fields" />
       </list>
@@ -492,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575679649934</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Hide some old results">
+      <created>1575679905439</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1575679905439</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -517,7 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some results." />
     <MESSAGE value="Alteration to save figure." />
     <MESSAGE value="Added script to be used in the process of troubleshooting why Harminv isn't finding resonance frequencies." />
     <MESSAGE value="Relative error in dw/dR for drs=np.logspace(start=-7,stop=-1.5,num=10) and resolution=100." />
@@ -542,7 +552,8 @@
     <MESSAGE value="Added error calculation to Hz case" />
     <MESSAGE value="Changed plot titles" />
     <MESSAGE value="Some result images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some result images" />
+    <MESSAGE value="Hide some old results" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hide some old results" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
