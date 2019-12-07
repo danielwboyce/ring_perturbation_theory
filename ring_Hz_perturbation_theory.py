@@ -99,14 +99,17 @@ def main():
     center_diff_dw_dR = []
     Harminv_freqs_at_R_plus_dR = []
 
-    drs = np.logspace(start=-3, stop=-0.5, num=10)
+    drs = np.logspace(start=-3, stop=-1, num=10)
 
     for dr in drs:
         sim.reset_meep()
         w = 1 + dr  # width of waveguide
         b = a + w
-
-        fcen = Harminv_freq_at_R
+        print(f'The current dr is dr={dr}')
+        if len(Harminv_freqs_at_R_plus_dR) == 0:
+            fcen = Harminv_freq_at_R
+        else:
+            fcen = Harminv_freqs_at_R_plus_dR[-1]
         df = 0.01
 
         sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Hz, mp.Vector3(r + 0.1))]
@@ -156,9 +159,9 @@ def main():
         plt.loglog(drs, relative_errors_freqs_at_R_plus_dR, 'bo-', label='relative error')
         plt.grid(True, which='both', ls='-')
         plt.xlabel('perturbation amount $dr$')
-        plt.ylabel('relative error between resonance frequencies')
+        plt.ylabel('relative error between $ω(R+dR)$')
         plt.legend(loc='upper left')
-        plt.title('Comparison of resonance frequencies at $R+dR$ predicted by\nperturbation theory found with Harminv')
+        plt.title('Comparison of resonance frequencies at $R+dR$ predicted by\nperturbation theory and found with Harminv')
         plt.tight_layout()
         # plt.show()
         plt.savefig('ring_Hz_perturbation_theory.freqs_error.png')
