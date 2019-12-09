@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.dw_dR_error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.freqs_error.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -179,13 +181,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575328315367</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Calculated the surface integral, now with results!">
-      <created>1575490472107</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1575490472107</updated>
     </task>
     <task id="LOCAL-00003" summary="Cleaned up the code somewhat">
       <created>1575491038221</created>
@@ -523,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575684435029</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Fixed the Ez case in cyl coordinates to include Δε terms">
+      <created>1575927544323</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1575927544323</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -548,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added script to be used in the process of troubleshooting why Harminv isn't finding resonance frequencies." />
     <MESSAGE value="Relative error in dw/dR for drs=np.logspace(start=-7,stop=-1.5,num=10) and resolution=100." />
     <MESSAGE value="Attempted to visualize fields in cylindrical coordinates; I don't think meep.Simulation.plot2D is playing nice with the fact it's in cylindrical coordinates." />
     <MESSAGE value="Visualization does work in Cartesian coordinates." />
@@ -573,7 +574,8 @@
     <MESSAGE value="Some result images" />
     <MESSAGE value="Hide some old results" />
     <MESSAGE value="Trying calculation with larger drs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying calculation with larger drs." />
+    <MESSAGE value="Fixed the Ez case in cyl coordinates to include Δε terms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the Ez case in cyl coordinates to include Δε terms" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
