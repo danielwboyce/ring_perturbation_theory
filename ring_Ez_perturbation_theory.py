@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 
 def main():
     n = 3.4                 # index of waveguide
+    w = 1                   # width of waveguide
     r = 1
     a = r                   # inner radius of ring
-    w = 1                   # width of waveguide
     b = a + w               # outer radius of ring
     pad = 4                 # padding between waveguide and edge of PML
 
@@ -19,15 +19,12 @@ def main():
 
     resolution = 100
 
-    sr = b + pad + dpml            # radial size (cell is from 0 to sr)
-    dimensions = mp.CYLINDRICAL    # coordinate system is (r,phi,z) instead of (x,y,z)
-    cell = mp.Vector3(sr, 0, 0)
+    sxy = 2 * (b + pad + dpml)            # radial size (cell is from 0 to sr)
+    cell = mp.Vector3(sxy, sxy, 0)
 
-    m = 4
-
-    geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
-                         size=mp.Vector3(w, 1e20, 1e20),
-                         material=mp.Medium(index=n))]
+    c1 = mp.Cylinder(radius=b, material=mp.Medium(index=n))
+    c2 = mp.Cylinder(radius=a)
+    geometry = [c1, c2]
 
     # Finding a resonance mode with a high Q-value (calculated with Harminv)
 
@@ -38,15 +35,16 @@ def main():
 
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,
-                        boundary_layers=pml_layers,
-                        resolution=resolution,
                         sources=sources,
-                        dimensions=dimensions,
-                        m=m)
+                        resolution=resolution,
+                        symmetries=[mp.Mirror(mp.Y)],
+                        boundary_layers=pml_layers)
 
-    h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
+    h = mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)
     sim.run(mp.after_sources(h), until_after_sources=200)
 
+    Harminv_Q_values = [mode.freq for mode in h.modes]
+    max_Q = np.argmax(Harminv_Q_values)
     Harminv_freq_at_R = h.modes[0].freq
 
     sim.reset_meep()
@@ -58,30 +56,35 @@ def main():
 
     sim = mp.Simulation(cell_size=cell,
                         geometry=geometry,
-                        boundary_layers=pml_layers,
-                        resolution=resolution,
                         sources=sources,
-                        dimensions=dimensions,
-                        m=m)
+                        resolution=resolution,
+                        symmetries=[mp.Mirror(mp.Y)],
+                        boundary_layers=pml_layers)
 
     sim.run(until_after_sources=200)
 
-    npts = 10
-    angles = 2 * np.pi / npts * np.arange(npts)
-    parallel_fields = []
-    for angle in angles:
-        point = mp.Vector3(a, angle)
-        e_z_field = sim.get_field_point(mp.Ez, point)
-        e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
-        parallel_fields.append(e_total_field)
+    npts_inner = 10
+    angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
+    deps_inner = 1 - n ** 2
+    parallel_fields_inner = []
+    for angle in angles_inner:
+        point = mp.Vector3(a * np.cos(angle), a * np.sin(angle))
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_total_field = deps_inner * e_z_field
+        parallel_fields_inner.append(e_total_field)
 
-        point = mp.Vector3(b, angle)
-        e_z_field = sim.get_field_point(mp.Ez, point)
-        e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
-        parallel_fields.append(e_total_field)
+    npts_outer = npts_inner
+    angles_outer = 2 * np.pi / npts_outer * np.arange(npts_outer)
+    deps_outer = n**2 - 1
+    parallel_fields_outer = []
+    for angle in angles_outer:
+        point = mp.Vector3(b * np.cos(angle), b * np.sin(angle))
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_total_field = deps_outer * e_z_field
+        parallel_fields_outer.append(e_total_field)
 
-    numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
-    denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
+    numerator_surface_integral = 2 * np.pi * b * mean(mean(parallel_fields_inner), mean(parallel_fields_outer))
+    denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3(), size=mp.Vector3(sxy-dpml, sxy-dpml))
     perturb_theory_dw_dR = -Harminv_freq_at_R * numerator_surface_integral / (4 * denominator_surface_integral)
 
     center_diff_dw_dR = []
@@ -102,17 +105,16 @@ def main():
 
         sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
 
-        geometry = [mp.Block(center=mp.Vector3(a + (w / 2)),
-                             size=mp.Vector3(w, 1e20, 1e20),
-                             material=mp.Medium(index=n))]
+        c1 = mp.Cylinder(radius=b, material=mp.Medium(index=n))
+        c2 = mp.Cylinder(radius=a)
+        geometry = [c1, c2]
 
         sim = mp.Simulation(cell_size=cell,
                             geometry=geometry,
-                            boundary_layers=pml_layers,
-                            resolution=resolution,
                             sources=sources,
-                            dimensions=dimensions,
-                            m=m)
+                            resolution=resolution,
+                            symmetries=[mp.Mirror(mp.Y)],
+                            boundary_layers=pml_layers)
 
         h = mp.Harminv(mp.Ez, mp.Vector3(r + 0.1), fcen, df)
         sim.run(mp.after_sources(h), until_after_sources=200)
