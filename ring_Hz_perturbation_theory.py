@@ -51,6 +51,8 @@ def main():
 
     sim.reset_meep()
 
+    # now running the simulation that will be used with perturbation theory to calculate dw/dR
+
     fcen = Harminv_freq_at_R
     df = 0.01
 
@@ -66,33 +68,64 @@ def main():
 
     sim.run(until_after_sources=200)
 
-    npts = 10
-    angles = 2 * np.pi / npts * np.arange(npts)
-    parallel_fields = []
-    perpendicular_fields = []
+    # now need to calculate the surface integrals that go into dw/dR. Fields parallel and perpendicular to the interface
+    # AND at the inner and outer surfaces are treated differently, so each will be calculated separately.
 
-    for angle in angles:
+    # section for fields at inner surface
+    npts_inner = 10
+    angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
+    deps_inner = 1 - n ** 2
+    deps_inv_inner = 1 - 1/(n**2)
+
+    # section for fields parallel to interface (Ez and Ep)
+    parallel_fields_inner = []
+    for angle in angles_inner:
         point = mp.Vector3(a, angle)
-        e_r_field = sim.get_field_point(mp.Er, point)
-        temp_perpendicular_field = np.real(np.sqrt(e_r_field*np.conj(e_r_field)))
-        perpendicular_fields.append(temp_perpendicular_field)
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_p_field = abs(sim.get_field_point(mp.Ep, point))
+        e_parallel_field = e_z_field + e_p_field
+        # fields have to be multiplied by Δε
+        e_parallel_field = deps_inner * e_parallel_field
+        parallel_fields_inner.append(e_parallel_field)
 
-        e_p_field = sim.get_field_point(mp.Ep, point)
-        e_z_field = sim.get_field_point(mp.Ez, point)
-        temp_parallel_field = np.real(np.sqrt(e_p_field*np.conj(e_p_field) + e_z_field*np.conj(e_z_field)))
-        parallel_fields.append(temp_parallel_field)
+    # section for fields perpendicular to interface (Er)
+    perpendicular_fields_inner = []
+    for angle in angles_inner:
+        point = mp.Vector3(a, angle)
+        e_r_field = abs(sim.get_field_point(mp.Er, point))
+        e_perpendicular_field = e_r_field
+        # fields have to be multiplied by Δε
+        e_perpendicular_field = deps_inv_inner * e_perpendicular_field
+        perpendicular_fields_inner.append(e_perpendicular_field)
 
+    # section for fields at outer surface
+    npts_outer = npts_inner
+    angles_outer = 2 * np.pi / npts_outer * np.arange(npts_outer)
+    deps_outer = n ** 2 - 1
+    deps_inv_outer = -1 + 1/(n**2)
+
+    # section for fields parallel to interface (Ez and Ep)    parallel_fields_outer = []
+    parallel_fields_outer = []
+    for angle in angles_outer:
         point = mp.Vector3(b, angle)
-        e_r_field = sim.get_field_point(mp.Er, point)
-        temp_perpendicular_field = np.real(np.sqrt(e_r_field * np.conj(e_r_field)))
-        perpendicular_fields.append(temp_perpendicular_field)
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_p_field = abs(sim.get_field_point(mp.Ep, point))
+        e_parallel_field = e_z_field + e_p_field
+        # fields have to be multiplied by Δε
+        e_parallel_field = deps_inner * e_parallel_field
+        parallel_fields_inner.append(e_parallel_field)
 
-        e_p_field = sim.get_field_point(mp.Ep, point)
-        e_z_field = sim.get_field_point(mp.Ez, point)
-        temp_parallel_field = np.real(np.sqrt(e_p_field * np.conj(e_p_field) + e_z_field * np.conj(e_z_field)))
-        parallel_fields.append(temp_parallel_field)
+    # section for fields perpendicular to interface (Er)
+    perpendicular_fields_outer = []
+    for angle in angles_inner:
+        point = mp.Vector3(b, angle)
+        e_r_field = abs(sim.get_field_point(mp.Er, point))
+        e_perpendicular_field = e_r_field
+        # fields have to be multiplied by Δε
+        e_perpendicular_field = deps_inv_inner * e_perpendicular_field
+        perpendicular_fields_inner.append(e_perpendicular_field)
 
-    numerator_surface_integral = 2 * np.pi * b * (mean(parallel_fields) - mean(perpendicular_fields))
+    numerator_surface_integral = 2 * np.pi * b * (mean([mean(parallel_fields_inner), mean(parallel_fields_outer)]) - mean([mean(perpendicular_fields_inner), mean(perpendicular_fields_outer)]))
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
     perturb_theory_dw_dR = -Harminv_freq_at_R * numerator_surface_integral / (4 * denominator_surface_integral)
 
