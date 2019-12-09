@@ -81,8 +81,10 @@ def main():
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
         e_z_field = abs(sim.get_field_point(mp.Ez, point))
-        e_total_field = deps_inner * e_z_field
-        parallel_fields_inner.append(e_total_field)
+        e_parallel_field = e_z_field
+        # fields have to be multiplied by Δε
+        e_parallel_field = deps_inner * e_parallel_field
+        parallel_fields_inner.append(e_parallel_field)
 
     # no perpendicular fields are calculated in this instance because none are excited with an Ez source.
 
@@ -96,8 +98,10 @@ def main():
     for angle in angles_outer:
         point = mp.Vector3(b, angle)
         e_z_field = abs(sim.get_field_point(mp.Ez, point))
-        e_total_field = deps_outer * e_z_field
-        parallel_fields_outer.append(e_total_field)
+        e_parallel_field = e_z_field
+        # fields have to be multiplied by Δε
+        e_parallel_field = deps_inner * e_parallel_field
+        parallel_fields_inner.append(e_parallel_field)
 
     # no perpendicular fields are calculated in this instance because none are excited with an Ez source.
 

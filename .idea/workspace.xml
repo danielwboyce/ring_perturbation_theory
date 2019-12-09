@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.dw_dR_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.dw_dR_error.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -181,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575328315367</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Cleaned up some commented-out code.">
-      <created>1575582852772</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1575582852772</updated>
     </task>
     <task id="LOCAL-00009" summary="Streamlined computation of surface integrals.">
       <created>1575583374541</created>
@@ -525,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575929986774</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Reverted back to denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3((b+pad/2)/2),size=mp.Vector3(b+pad/2))">
+      <created>1575930737681</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1575930737682</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
