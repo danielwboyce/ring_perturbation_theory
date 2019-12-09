@@ -182,13 +182,6 @@
       <option name="presentableId" value="Default" />
       <updated>1575328315367</updated>
     </task>
-    <task id="LOCAL-00005" summary="Extracted resonance frequency from Harminv">
-      <created>1575581957320</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1575581957320</updated>
-    </task>
     <task id="LOCAL-00006" summary="Separated Meep simulations; running second one with fcen set at resonance_0 and df=0.01">
       <created>1575582044941</created>
       <option name="number" value="00006" />
@@ -525,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575928430622</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Results with denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3(),size=mp.Vector3(2*sr,0,0))">
+      <created>1575929140328</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1575929140329</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -550,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Visualization does work in Cartesian coordinates." />
     <MESSAGE value="Revert &quot;Attempted to visualize fields in cylindrical coordinates; I don't think meep.Simulation.plot2D is playing nice with the fact it's in cylindrical coordinates.&quot;&#10;&#10;This reverts commit bfda5330" />
     <MESSAGE value="Reverted to cylindrical coordinates to see if they could work." />
     <MESSAGE value="Reverted to xyz coordinates but added Harminv to see if it'll find anything." />
@@ -575,7 +574,8 @@
     <MESSAGE value="Fixed the Ez case in cyl coordinates to include Δε terms" />
     <MESSAGE value="Results in Ez case when the Δε factors are added" />
     <MESSAGE value="Added more comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more comments" />
+    <MESSAGE value="Results with denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3(),size=mp.Vector3(2*sr,0,0))" />
+    <option name="LAST_COMMIT_MESSAGE" value="Results with denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3(),size=mp.Vector3(2*sr,0,0))" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
