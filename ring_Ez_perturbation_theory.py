@@ -51,6 +51,8 @@ def main():
 
     sim.reset_meep()
 
+    # now running the simulation that will be used with perturbation theory to calculate dw/dR
+
     fcen = Harminv_freq_at_R
     df = 0.01
 
@@ -66,9 +68,15 @@ def main():
 
     sim.run(until_after_sources=200)
 
+    # now need to calculate the surface integrals that go into dw/dR. Fields parallel and perpendicular to the interface
+    # AND at the inner and outer surfaces are treated differently, so each will be calculated separately.
+
+    # section for fields at inner surface
     npts_inner = 10
     angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
     deps_inner = 1 - n ** 2
+
+    # section for fields parallel to interface (only Ez because of the physics of this problem)
     parallel_fields_inner = []
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
@@ -76,15 +84,22 @@ def main():
         e_total_field = deps_inner * e_z_field
         parallel_fields_inner.append(e_total_field)
 
+    # no perpendicular fields are calculated in this instance because none are excited with an Ez source.
+
+    # section for fields at outer surface
     npts_outer = npts_inner
     angles_outer = 2 * np.pi / npts_outer * np.arange(npts_outer)
     deps_outer = n ** 2 - 1
+
+    # section for fields parallel to interface (only Ez because of the physics of this problem)
     parallel_fields_outer = []
     for angle in angles_outer:
         point = mp.Vector3(b, angle)
         e_z_field = abs(sim.get_field_point(mp.Ez, point))
         e_total_field = deps_outer * e_z_field
         parallel_fields_outer.append(e_total_field)
+
+    # no perpendicular fields are calculated in this instance because none are excited with an Ez source.
 
     numerator_surface_integral = 2 * np.pi * b * mean([mean(parallel_fields_inner), mean(parallel_fields_outer)])
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
