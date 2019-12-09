@@ -66,21 +66,27 @@ def main():
 
     sim.run(until_after_sources=200)
 
-    npts = 10
-    angles = 2 * np.pi / npts * np.arange(npts)
-    parallel_fields = []
-    for angle in angles:
+    npts_inner = 10
+    angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
+    deps_inner = 1 - n ** 2
+    parallel_fields_inner = []
+    for angle in angles_inner:
         point = mp.Vector3(a, angle)
-        e_z_field = sim.get_field_point(mp.Ez, point)
-        e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
-        parallel_fields.append(e_total_field)
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_total_field = deps_inner * e_z_field
+        parallel_fields_inner.append(e_total_field)
 
+    npts_outer = npts_inner
+    angles_outer = 2 * np.pi / npts_outer * np.arange(npts_outer)
+    deps_outer = n ** 2 - 1
+    parallel_fields_outer = []
+    for angle in angles_outer:
         point = mp.Vector3(b, angle)
-        e_z_field = sim.get_field_point(mp.Ez, point)
-        e_total_field = np.real(np.sqrt(e_z_field * np.conj(e_z_field)))
-        parallel_fields.append(e_total_field)
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_total_field = deps_outer * e_z_field
+        parallel_fields_outer.append(e_total_field)
 
-    numerator_surface_integral = 2 * np.pi * b * mean(parallel_fields)
+    numerator_surface_integral = 2 * np.pi * b * mean([mean(parallel_fields_inner), mean(parallel_fields_outer)])
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
     perturb_theory_dw_dR = -Harminv_freq_at_R * numerator_surface_integral / (4 * denominator_surface_integral)
 
