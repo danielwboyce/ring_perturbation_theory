@@ -17,7 +17,7 @@ def main():
     dpml = 2                # thickness of PML
     pml_layers = [mp.PML(dpml)]
 
-    resolution = 100
+    resolution = 10
 
     sxy = 2 * (b + pad + dpml)            # radial size (cell is from 0 to sr)
     cell = mp.Vector3(sxy, sxy, 0)
@@ -44,10 +44,12 @@ def main():
     sim.run(mp.after_sources(h), until_after_sources=200)
 
     Harminv_Q_values = [mode.freq for mode in h.modes]
-    max_Q = np.argmax(Harminv_Q_values)
-    Harminv_freq_at_R = h.modes[0].freq
-
+    max_Q_index = np.argmax(Harminv_Q_values)
+    Harminv_freq_at_R = h.modes[max_Q_index].freq
+    print(f'The selected resonance frequency to investigate is {Harminv_freq_at_R}')
     sim.reset_meep()
+
+    resolution = 50
 
     fcen = Harminv_freq_at_R
     df = 0.01
