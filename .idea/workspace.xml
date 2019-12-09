@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ring_Hz_perturbation_theory.dw_dR_error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ring_Hz_perturbation_theory.freqs_error.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575328315367</updated>
-    </task>
-    <task id="LOCAL-00011" summary="First pass on calculating dw/dR from perturbation theory">
-      <created>1575584580137</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1575584580137</updated>
     </task>
     <task id="LOCAL-00012" summary="Fixed calculation using electric_energy_in_box to work with cylindrical coordinates.">
       <created>1575585238524</created>
@@ -523,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575931333504</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Fixed typos">
+      <created>1575931978938</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1575931978938</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -548,7 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Split the field files into one that will stay in xyz coordinates and one that will stay in cylindrical coordinates." />
     <MESSAGE value="Determined that Harminv will find a resonant mode when m=4" />
     <MESSAGE value="Changed m to m=4 to match the mode that the Hz script is working with." />
     <MESSAGE value="Fixed numerator_surface_integral calculation for the Hz case to include the adjustment for the perpendicular fields." />
@@ -573,7 +573,8 @@
     <MESSAGE value="Reverted back to denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3((b+pad/2)/2),size=mp.Vector3(b+pad/2))" />
     <MESSAGE value="Refactored to make more readable" />
     <MESSAGE value="Updated Hz case to make more readable and to include Δε calculations." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Hz case to make more readable and to include Δε calculations." />
+    <MESSAGE value="Fixed typos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
