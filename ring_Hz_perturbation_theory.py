@@ -112,8 +112,8 @@ def main():
         e_p_field = abs(sim.get_field_point(mp.Ep, point))
         e_parallel_field = e_z_field + e_p_field
         # fields have to be multiplied by Δε
-        e_parallel_field = deps_inner * e_parallel_field
-        parallel_fields_inner.append(e_parallel_field)
+        e_parallel_field = deps_outer * e_parallel_field
+        parallel_fields_outer.append(e_parallel_field)
 
     # section for fields perpendicular to interface (Er)
     perpendicular_fields_outer = []
@@ -122,8 +122,8 @@ def main():
         e_r_field = abs(sim.get_field_point(mp.Er, point))
         e_perpendicular_field = e_r_field
         # fields have to be multiplied by Δε
-        e_perpendicular_field = deps_inv_inner * e_perpendicular_field
-        perpendicular_fields_inner.append(e_perpendicular_field)
+        e_perpendicular_field = deps_inv_outer * e_perpendicular_field
+        perpendicular_fields_outer.append(e_perpendicular_field)
 
     numerator_surface_integral = 2 * np.pi * b * (mean([mean(parallel_fields_inner), mean(parallel_fields_outer)]) - mean([mean(perpendicular_fields_inner), mean(perpendicular_fields_outer)]))
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))

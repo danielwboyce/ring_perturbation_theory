@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_Ez_perturbation_theory">
+  <component name="RunManager" selected="Python.ring_perturbation_theory">
     <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,8 +161,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ring_Ez_perturbation_theory" />
         <item itemvalue="Python.ring_perturbation_theory" />
+        <item itemvalue="Python.ring_Ez_perturbation_theory" />
         <item itemvalue="Python.ring_Hz_see_fields.cyl" />
         <item itemvalue="Python.ring_Hz_see_fields" />
         <item itemvalue="Python.minimize_error" />
@@ -180,20 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575328315367</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Streamlined computation of surface integrals.">
-      <created>1575583374541</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1575583374541</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Fixed some changes that had slipped through the cracks.">
-      <created>1575583698007</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1575583698007</updated>
     </task>
     <task id="LOCAL-00011" summary="First pass on calculating dw/dR from perturbation theory">
       <created>1575584580137</created>
@@ -524,7 +509,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575930737682</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Refactored to make more readable">
+      <created>1575931302998</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1575931302998</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Updated Hz case to make more readable and to include Δε calculations.">
+      <created>1575931333504</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1575931333504</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -549,8 +548,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reverted to xyz coordinates but added Harminv to see if it'll find anything." />
-    <MESSAGE value="Harminv didn't find resonant modes in Hz or Ey but it did find one in Ex with f=0.18304129247868764 and Q=205.64038665776567" />
     <MESSAGE value="Split the field files into one that will stay in xyz coordinates and one that will stay in cylindrical coordinates." />
     <MESSAGE value="Determined that Harminv will find a resonant mode when m=4" />
     <MESSAGE value="Changed m to m=4 to match the mode that the Hz script is working with." />
@@ -574,7 +571,9 @@
     <MESSAGE value="Results with denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3(),size=mp.Vector3(2*sr,0,0))" />
     <MESSAGE value="Results with denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3(),size=mp.Vector3(sr,0,0))" />
     <MESSAGE value="Reverted back to denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3((b+pad/2)/2),size=mp.Vector3(b+pad/2))" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reverted back to denominator_surface_integral=sim.electric_energy_in_box(center=mp.Vector3((b+pad/2)/2),size=mp.Vector3(b+pad/2))" />
+    <MESSAGE value="Refactored to make more readable" />
+    <MESSAGE value="Updated Hz case to make more readable and to include Δε calculations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Hz case to make more readable and to include Δε calculations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
