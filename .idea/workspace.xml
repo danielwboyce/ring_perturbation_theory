@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tutorial.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Hz_perturbation_theory.py" afterDir="false" />
-    </list>
+    <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ring_perturbation_theory">
+  <component name="RunManager" selected="Python.ring_Ez_perturbation_theory">
     <configuration name="minimize_error" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ring_perturbation_theory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,8 +160,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ring_perturbation_theory" />
         <item itemvalue="Python.ring_Ez_perturbation_theory" />
+        <item itemvalue="Python.ring_perturbation_theory" />
         <item itemvalue="Python.ring_Hz_see_fields.cyl" />
         <item itemvalue="Python.ring_Hz_see_fields" />
         <item itemvalue="Python.minimize_error" />
@@ -181,20 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575328315367</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added a circularly-polarized in-plane component; not finding a resonance mode.">
-      <created>1575588817469</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1575588817469</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Made additional change to denominator_surface_integral calculation to account for cylindrical coordinates.">
-      <created>1575589206259</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1575589206259</updated>
     </task>
     <task id="LOCAL-00017" summary="Harminv still not finding resonance frequency.">
       <created>1575589256567</created>
@@ -525,7 +508,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575934078457</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Added tutorial markdown to render">
+      <created>1575934319300</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1575934319300</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Correction to square fields">
+      <created>1575934456214</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1575934456214</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -550,8 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added calculation of error between resonance frequency at R+dR predicted by the value of dw/dR found with perturbation theory and the resonance frequency found with Harminiv by running a simulation at R+dR." />
-    <MESSAGE value="Renamed a large number of variables to be more transparent in what they're representing." />
     <MESSAGE value="Slightly redid formatting of output plot." />
     <MESSAGE value="Fixed another typo." />
     <MESSAGE value="Redoing some error convergence tests, looking at relative error convergence in frequency predictions" />
@@ -575,7 +570,9 @@
     <MESSAGE value="Results of Hz case with deps terms added" />
     <MESSAGE value="Correction adding epsilon at each point (per Eq. 30 on pg. 19 of http://ab-initio.mit.edu/book/photonic-crystals-book.pdf)" />
     <MESSAGE value="Finds harmonic with highest Q value" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finds harmonic with highest Q value" />
+    <MESSAGE value="Added tutorial markdown to render" />
+    <MESSAGE value="Correction to square fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction to square fields" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

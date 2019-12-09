@@ -82,7 +82,7 @@ def main():
     parallel_fields_inner = []
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
-        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))**2
         e_parallel_field = e_z_field
         # fields have to be multiplied by Δε
         e_parallel_field = deps_inner * e_parallel_field
@@ -99,7 +99,7 @@ def main():
     parallel_fields_outer = []
     for angle in angles_outer:
         point = mp.Vector3(b, angle)
-        e_z_field = abs(sim.get_field_point(mp.Ez, point))
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))**2
         e_parallel_field = e_z_field
         # fields have to be multiplied by Δε
         e_parallel_field = deps_inner * e_parallel_field
