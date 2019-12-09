@@ -81,8 +81,8 @@ def main():
     parallel_fields_inner = []
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
-        e_z_field = abs(sim.get_field_point(mp.Ez, point))
-        e_p_field = abs(sim.get_field_point(mp.Ep, point))
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))**2
+        e_p_field = abs(sim.get_field_point(mp.Ep, point))**2
         e_parallel_field = e_z_field + e_p_field
         # fields have to be multiplied by Δε
         e_parallel_field = deps_inner * e_parallel_field
@@ -92,7 +92,7 @@ def main():
     perpendicular_fields_inner = []
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
-        e_r_field = abs(sim.get_field_point(mp.Er, point))
+        e_r_field = abs(sim.get_field_point(mp.Er, point))**2
         e_perpendicular_field = e_r_field
         # fields have to be multiplied by Δε
         e_perpendicular_field = deps_inv_inner * (abs(sim.get_epsilon_point(point, Harminv_freq_at_R))**2) * e_perpendicular_field
@@ -108,8 +108,8 @@ def main():
     parallel_fields_outer = []
     for angle in angles_outer:
         point = mp.Vector3(b, angle)
-        e_z_field = abs(sim.get_field_point(mp.Ez, point))
-        e_p_field = abs(sim.get_field_point(mp.Ep, point))
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))**2
+        e_p_field = abs(sim.get_field_point(mp.Ep, point))**2
         e_parallel_field = e_z_field + e_p_field
         # fields have to be multiplied by Δε
         e_parallel_field = deps_outer * e_parallel_field
@@ -120,7 +120,7 @@ def main():
     for angle in angles_inner:
         point = mp.Vector3(b, angle)
         e_r_field = abs(sim.get_field_point(mp.Er, point))
-        e_perpendicular_field = e_r_field
+        e_perpendicular_field = e_r_field**2
         # fields have to be multiplied by Δε
         e_perpendicular_field = deps_inv_outer * (abs(sim.get_epsilon_point(point, Harminv_freq_at_R))**2) * e_perpendicular_field
         perpendicular_fields_outer.append(e_perpendicular_field)
