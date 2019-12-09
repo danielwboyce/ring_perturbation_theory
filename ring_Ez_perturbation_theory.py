@@ -85,7 +85,7 @@ def main():
         e_total_field = deps_outer * e_z_field
         parallel_fields_outer.append(e_total_field)
 
-    numerator_surface_integral = 2 * np.pi * b * mean(mean(parallel_fields_inner), mean(parallel_fields_outer))
+    numerator_surface_integral = 2 * np.pi * b * mean([mean(parallel_fields_inner), mean(parallel_fields_outer)])
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3(), size=mp.Vector3(sxy-dpml, sxy-dpml))
     perturb_theory_dw_dR = -Harminv_freq_at_R * numerator_surface_integral / (4 * denominator_surface_integral)
 
