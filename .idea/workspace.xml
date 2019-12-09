@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24f5cc3-4963-4aea-aa2c-e6b5d386a535" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-3_to_1e-1_tests/Ez_error_convergence.dr_1e-3.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-3_to_1e-1_tests/Ez_error_convergence.dr_1e-3.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-3_to_1e-1_tests/ring_Ez_perturbation_theory.dw_dR_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-3_to_1e-1_tests/ring_Ez_perturbation_theory.dw_dR_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-3_to_1e-1_tests/ring_Ez_perturbation_theory.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-3_to_1e-1_tests/ring_Ez_perturbation_theory.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-3_to_1e-1_tests/ring_Hz_perturbation_theory.dw_dR_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-3_to_1e-1_tests/ring_Hz_perturbation_theory.dw_dR_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-3_to_1e-1_tests/ring_Hz_perturbation_theory.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-3_to_1e-1_tests/ring_Hz_perturbation_theory.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dat" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dat.backup" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dat.backup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dr_0.03162277660168379.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dr_0.03162277660168379.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dr_1e-7.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/Ez_error_convergence.dr_1e-7.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/ring_Ez_perturbation_theory.dw_dR_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/ring_Ez_perturbation_theory.dw_dR_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/ring_Ez_perturbation_theory.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/ring_Ez_perturbation_theory.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/ring_Ez_perturbation_theory.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/ring_Ez_perturbation_theory.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/ring_Hz_perturbation_theory.dw_dR_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/ring_Hz_perturbation_theory.dw_dR_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/ring_Hz_perturbation_theory.freqs_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/ring_Hz_perturbation_theory.freqs_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/ring_Hz_see_fields.cyl.py" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/ring_Hz_see_fields.cyl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dr_1e-7_to_1e-1pt5_tests/ring_Hz_see_fields.xyz.py" beforeDir="false" afterPath="$PROJECT_DIR$/cylindrical/dr_1e-7_to_1e-1pt5_tests/ring_Hz_see_fields.xyz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" beforeDir="false" afterPath="$PROJECT_DIR$/ring_Ez_perturbation_theory.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="bigger_drs" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,11 +50,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/small_drs_tests" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cylindrical" />
+      <recent name="$PROJECT_DIR$/small_drs_tests" />
     </key>
   </component>
   <component name="RunDashboard">
