@@ -47,7 +47,9 @@ def main():
     h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
     sim.run(mp.after_sources(h), until_after_sources=200)
 
-    Harminv_freq_at_R = h.modes[0].freq
+    Q_values = [mode.Q for mode in h.modes]
+    max_Q_index = np.argmax(Q_values)
+    Harminv_freq_at_R = h.modes[max_Q_index].freq
 
     sim.reset_meep()
 
