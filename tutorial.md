@@ -49,4 +49,53 @@ def main():
                          material=mp.Medium(index=n))]
 ```
 Be sure, as before, to set the `dimensions` parameter to `CYLINDRICAL`. Also note that unlike the previous tutorial, 
-`m` has been given a hard value and is no longer a command-line argument.
+`m` has been given a hard value and is no longer a command-line argument. The resolution has also been increased to 100
+in order to reduce discretization error. This increase in resolution is only strictly necessary while calculating errors
+in the perturbed states, but we increased it throughout the whole script for neatness.
+
+Next, we use Harminv to find a resonant frequency:
+```python
+    fcen = 0.15         # pulse center frequency
+    df = 0.1            # pulse width (in frequency)
+
+    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r+0.1))]
+
+    sim = mp.Simulation(cell_size=cell,
+                        geometry=geometry,
+                        boundary_layers=pml_layers,
+                        resolution=resolution,
+                        sources=sources,
+                        dimensions=dimensions,
+                        m=m)
+
+    h = mp.Harminv(mp.Ez, mp.Vector3(r+0.1), fcen, df)
+    sim.run(mp.after_sources(h), until_after_sources=200)
+
+    Q_values = [mode.Q for mode in h.modes]
+    max_Q_index = np.argmax(Q_values)
+    Harminv_freq_at_R = h.modes[max_Q_index].freq
+
+    sim.reset_meep()
+```
+
+We can use the calculated resonant frequency to run the simulation again, this time where our Gaussian pulse is centered
+at the resonant frequency and has an extremely narrow band (so that hopefully only one resonant mode is excited).
+
+```python
+    fcen = Harminv_freq_at_R
+    df = 0.01
+
+    sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), mp.Ez, mp.Vector3(r + 0.1))]
+
+    sim = mp.Simulation(cell_size=cell,
+                        geometry=geometry,
+                        boundary_layers=pml_layers,
+                        resolution=resolution,
+                        sources=sources,
+                        dimensions=dimensions,
+                        m=m)
+
+    sim.run(until_after_sources=200)
+```
+
+Now things get a bit different. 
