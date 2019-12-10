@@ -77,61 +77,37 @@ def main():
     npts_inner = 10
     angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
     deps_inner = 1 - n ** 2
-    deps_inv_inner = 1 - 1 / (n ** 2)
 
-    # section for fields parallel to interface (Ez and Ep)
+    # section for fields parallel to interface (only Ez because of the physics of this problem)
     parallel_fields_inner = []
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
-        e_z_field = abs(sim.get_field_point(mp.Ez, point)) ** 2
-        e_p_field = abs(sim.get_field_point(mp.Ep, point)) ** 2
-        e_parallel_field = e_z_field + e_p_field
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))**2
+        e_parallel_field = e_z_field
         # fields have to be multiplied by Δε
         e_parallel_field = deps_inner * e_parallel_field
         parallel_fields_inner.append(e_parallel_field)
 
-    # section for fields perpendicular to interface (Er)
-    perpendicular_fields_inner = []
-    for angle in angles_inner:
-        point = mp.Vector3(a, angle)
-        e_r_field = abs(sim.get_field_point(mp.Er, point)) ** 2
-        e_perpendicular_field = e_r_field
-        # fields have to be multiplied by Δ(1/ε) and ε**2
-        e_perpendicular_field = deps_inv_inner * (
-                    abs(sim.get_epsilon_point(point, Harminv_freq_at_R)) ** 2) * e_perpendicular_field
-        perpendicular_fields_inner.append(e_perpendicular_field)
+    # no perpendicular fields are calculated in this instance because none are excited with an Ez source.
 
     # section for fields at outer surface
     npts_outer = npts_inner
     angles_outer = 2 * np.pi / npts_outer * np.arange(npts_outer)
     deps_outer = n ** 2 - 1
-    deps_inv_outer = -1 + 1 / (n ** 2)
 
-    # section for fields parallel to interface (Ez and Ep)    parallel_fields_outer = []
+    # section for fields parallel to interface (only Ez because of the physics of this problem)
     parallel_fields_outer = []
     for angle in angles_outer:
         point = mp.Vector3(b, angle)
-        e_z_field = abs(sim.get_field_point(mp.Ez, point)) ** 2
-        e_p_field = abs(sim.get_field_point(mp.Ep, point)) ** 2
-        e_parallel_field = e_z_field + e_p_field
+        e_z_field = abs(sim.get_field_point(mp.Ez, point))**2
+        e_parallel_field = e_z_field
         # fields have to be multiplied by Δε
         e_parallel_field = deps_outer * e_parallel_field
         parallel_fields_outer.append(e_parallel_field)
 
-    # section for fields perpendicular to interface (Er)
-    perpendicular_fields_outer = []
-    for angle in angles_inner:
-        point = mp.Vector3(b, angle)
-        e_r_field = abs(sim.get_field_point(mp.Er, point))
-        e_perpendicular_field = e_r_field ** 2
-        # fields have to be multiplied by Δ(1/ε) and ε**2
-        e_perpendicular_field = deps_inv_outer * (
-                    abs(sim.get_epsilon_point(point, Harminv_freq_at_R)) ** 2) * e_perpendicular_field
-        perpendicular_fields_outer.append(e_perpendicular_field)
+    # no perpendicular fields are calculated in this instance because none are excited with an Ez source.
 
-    numerator_surface_integral = 2 * np.pi * b * (
-                mean([mean(parallel_fields_inner), mean(parallel_fields_outer)]) - mean(
-            [mean(perpendicular_fields_inner), mean(perpendicular_fields_outer)]))
+    numerator_surface_integral = 2 * np.pi * b * mean([mean(parallel_fields_inner), mean(parallel_fields_outer)])
     denominator_surface_integral = sim.electric_energy_in_box(center=mp.Vector3((b + pad/2) / 2), size=mp.Vector3(b + pad/2))
     perturb_theory_dw_dR = -Harminv_freq_at_R * numerator_surface_integral / (4 * denominator_surface_integral)
 
