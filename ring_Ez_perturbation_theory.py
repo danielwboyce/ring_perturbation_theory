@@ -78,7 +78,7 @@ def main():
     angles_inner = 2 * np.pi / npts_inner * np.arange(npts_inner)
     deps_inner = 1 - n ** 2
 
-    # section for fields parallel to interface (only Ez because of the physics of this problem)
+    # section for fields parallel to interface (only Ez because Ep isn't excited by an Ez source).
     parallel_fields_inner = []
     for angle in angles_inner:
         point = mp.Vector3(a, angle)
@@ -95,7 +95,7 @@ def main():
     angles_outer = 2 * np.pi / npts_outer * np.arange(npts_outer)
     deps_outer = n ** 2 - 1
 
-    # section for fields parallel to interface (only Ez because of the physics of this problem)
+    # section for fields parallel to interface (only Ez because Ep isn't excited by an Ez source).
     parallel_fields_outer = []
     for angle in angles_outer:
         point = mp.Vector3(b, angle)
